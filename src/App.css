@@ -1,3 +1,72 @@
 :root {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--primary-color);
+  --border-radius: 4px;
+  --primary-color: rgb(247, 238, 227);
+  --secondary-color: #e1d9cd;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  font-size: 2.7rem;
+  padding: 2rem;
+  font-weight: bold;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+input {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  width: 16rem;
+  margin-right: 0.6rem;
+  border: none;
+  border-radius: var(--border-radius);
+  outline: none;
+  background-color: #fff;
+}
+
+.convertInput {
+  display: flex;
+}
+
+.icon {
+  font-size: 2.5rem;
+}
+
+.devise {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+select {
+  border: none;
+  padding: 0 0.5rem;
+  background-color: var(--secondary-color);
+  cursor: pointer;
+  border-radius: var(--border-radius);
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background-color: var(--secondary-color);
+  border-radius: var(--border-radius);
+  font-weight: bold;
+}
+
+svg {
+  margin-right: 0.4rem;
 }

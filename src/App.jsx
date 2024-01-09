@@ -1,10 +1,19 @@
 import { useState } from "react";
 import rates from "./rates";
 import "./App.css";
+import EurToUsd from "./components/EurToUsd";
+import ButtonBonus from "./components/ButtonBonus";
+import Converter from "./components/Converter";
+// Import FOntAwesome ----
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faRotate } from "@fortawesome/free-solid-svg-icons";
+library.add(faRotate);
 
 function App() {
-  const [eurCurrency, setEurCurrency] = useState("");
-  const [usdCurrency, setUsdCurrency] = useState("");
+  const [eurCurrency, setEurCurrency] = useState(rates.EUR);
+  const [usdCurrency, setUsdCurrency] = useState(rates.USD);
+
+  const [bonus, setBonus] = useState(false);
 
   const handleEurCurrency = (event) => {
     const valueEur = event.target.value;
@@ -15,24 +24,30 @@ function App() {
     }
   };
 
+  const toggleBonus = () => {
+    return setBonus(!bonus);
+  };
+
   return (
     <>
-      <h1>💶 Converter 💵</h1>
-      <main>
-        <div>
-          <input
-            type="text"
-            placeholder="0"
-            onChange={handleEurCurrency}
-            value={eurCurrency}
-          />
-          <span>€</span>
-        </div>
-        <span>⬇️</span>
-        <div>
-          <input type="text" placeholder="0" value={usdCurrency} readOnly />
-          <span>$</span>
-        </div>
+      <header className="container">
+        {bonus ? "Converter" : "💶 Eur to Usd 💵"}
+      </header>
+      <main className="container">
+        <ButtonBonus onClick={toggleBonus} value={bonus} />
+        {bonus ? (
+          <>
+            <Converter rates={rates} />
+          </>
+        ) : (
+          <>
+            <EurToUsd
+              currencyValueEur={eurCurrency}
+              currencyValueUsd={usdCurrency}
+              onChange={handleEurCurrency}
+            />
+          </>
+        )}
       </main>
     </>
   );
